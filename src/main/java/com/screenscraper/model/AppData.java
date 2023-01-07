@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.ApplicationScope;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 @Component
@@ -26,11 +27,11 @@ public class AppData {
     public List<RecordDTO> get(String city, String zip, String miles) {
         List<RecordDTO> result = data;
         if (zip != null && !zip.isEmpty() && city != null && !city.isEmpty()) {
-            result = data.stream().filter(d -> d.getZip().equals(zip) || city.contains(d.getCity())).collect(Collectors.toList());
+            result = data.stream().filter(d -> d.getZip().equals(zip) || city.toLowerCase(Locale.ROOT).contains(d.getCity().toLowerCase())).collect(Collectors.toList());
         } else if (zip != null && !zip.isEmpty()) {
             result = data.stream().filter(d -> d.getZip().equals(zip)).collect(Collectors.toList());
         } else if (city != null && !city.isEmpty()) {
-            result = data.stream().filter(d -> city.contains(d.getCity())).collect(Collectors.toList());
+            result = data.stream().filter(d -> city.toLowerCase(Locale.ROOT).contains(d.getCity().toLowerCase())).collect(Collectors.toList());
         }
         if (zip != null && !zip.isEmpty() && miles != null && !miles.isEmpty()) {
             List<String> zipCodes = screenScraperService.getZipCodes(zip, miles);
