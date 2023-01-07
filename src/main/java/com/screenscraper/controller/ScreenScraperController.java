@@ -23,9 +23,9 @@ public class ScreenScraperController {
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<RecordDTO> getData(@RequestParam(required = false) String jurisdiction,
+    public List<RecordDTO> getData(@RequestParam(required = false) String city,
                                    @RequestParam(required = false) String zip,
                                    @RequestParam(required = false) String miles) {
-        return appData.get(zip, jurisdiction, miles);
+        return appData.get(city, zip, miles);
     }
 }

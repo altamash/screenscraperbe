@@ -8,7 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class RecordDTO {
-    private String jurisdiction;
+//    private String jurisdiction;
     private String fileNumber;
     private String saleDate;
     private String saleTime;
@@ -20,7 +20,7 @@ public class RecordDTO {
     @Override
     public String toString() {
         return "RecordDTO{" +
-                "jurisdiction='" + jurisdiction + '\'' +
+//                "jurisdiction='" + jurisdiction + '\'' +
                 ", fileNumber='" + fileNumber + '\'' +
                 ", saleDate='" + saleDate + '\'' +
                 ", saleTime='" + saleTime + '\'' +

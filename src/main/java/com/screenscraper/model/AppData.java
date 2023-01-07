@@ -23,14 +23,14 @@ public class AppData {
     @Autowired
     private ScreenScraperService screenScraperService;
 
-    public List<RecordDTO> get(String zip, String jurisdiction, String miles) {
+    public List<RecordDTO> get(String city, String zip, String miles) {
         List<RecordDTO> result = data;
-        if (zip != null && !zip.isEmpty() && jurisdiction != null && !jurisdiction.isEmpty()) {
-            result = data.stream().filter(d -> d.getZip().equals(zip) || d.getJurisdiction().equals(jurisdiction)).collect(Collectors.toList());
+        if (zip != null && !zip.isEmpty() && city != null && !city.isEmpty()) {
+            result = data.stream().filter(d -> d.getZip().equals(zip) || d.getCity().equals(city)).collect(Collectors.toList());
         } else if (zip != null && !zip.isEmpty()) {
             result = data.stream().filter(d -> d.getZip().equals(zip)).collect(Collectors.toList());
-        } else if (jurisdiction != null && !jurisdiction.isEmpty()) {
-            result = data.stream().filter(d -> d.getJurisdiction().equals(jurisdiction)).collect(Collectors.toList());
+        } else if (city != null && !city.isEmpty()) {
+            result = data.stream().filter(d -> d.getCity().equals(city)).collect(Collectors.toList());
         }
         if (zip != null && !zip.isEmpty() && miles != null && !miles.isEmpty()) {
             List<String> zipCodes = screenScraperService.getZipCodes(zip, miles);

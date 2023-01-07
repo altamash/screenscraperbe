@@ -104,7 +104,7 @@ public class HtmlUnitScraper {
                     if (jurisdiction.isEmpty() && record.isEmpty()) {
                         continue;
                     }
-                    if (!jurisdiction.isEmpty()) {
+                    /*if (!jurisdiction.isEmpty()) {
                         newRecord = true;
 //                        if (recordDTO.getJurisdiction() != null) {
 //                            list.add(recordDTO);
@@ -112,10 +112,11 @@ public class HtmlUnitScraper {
 //                        recordDTO = new RecordDTO();
 //                        recordDTO.setJurisdiction(jurisdiction.get(0).getValue());
                         currentJurisdiction = jurisdiction.get(0).getValue();
-                    } else if (!record.isEmpty()) {
+                    } else */
+                    if (!record.isEmpty()) {
                         newRecord = false;
                         RecordDTO recordDTO = new RecordDTO();
-                        recordDTO.setJurisdiction(currentJurisdiction);
+//                        recordDTO.setJurisdiction(currentJurisdiction);
 //                        recordDTO.setFileNumber(((DomText) record.get(1).getByXPath("./text()[normalize-space()]").get(0)).getTextContent());
                         recordDTO.setFileNumber(record.get(1).getTextContent());
                         recordDTO.setSaleDate(record.get(2).getTextContent());

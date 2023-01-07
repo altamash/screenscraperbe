@@ -85,7 +85,7 @@ public class ScreenScraperServiceImpl implements ScreenScraperService {
                 List<String> heading = htmlTableRows.get(0).getByXPath("td//text()[normalize-space()]");
                 boolean newRecord = false;
 //                RecordDTO recordDTO = null;
-                String currentJurisdiction = null;
+//                String currentJurisdiction = null;
                 for (int i = 1; i < htmlTableRows.size(); i++) {
                     List<DomAttr> jurisdiction = htmlTableRows.get(i).getByXPath("./td[@class='subhead']/a/@name");
                     List<HtmlTableDataCell> record = htmlTableRows.get(i).getByXPath("./td[@class='bodytext']");
@@ -99,11 +99,11 @@ public class ScreenScraperServiceImpl implements ScreenScraperService {
 //                        }
 //                        recordDTO = new RecordDTO();
 //                        recordDTO.setJurisdiction(jurisdiction.get(0).getValue());
-                        currentJurisdiction = jurisdiction.get(0).getValue();
+//                        currentJurisdiction = jurisdiction.get(0).getValue();
                     } else if (!record.isEmpty()) {
                         newRecord = false;
                         RecordDTO recordDTO = new RecordDTO();
-                        recordDTO.setJurisdiction(currentJurisdiction);
+//                        recordDTO.setJurisdiction(currentJurisdiction);
 //                        recordDTO.setFileNumber(((DomText) record.get(1).getByXPath("./text()[normalize-space()]").get(0)).getTextContent());
                         recordDTO.setFileNumber(record.get(1).getTextContent());
                         recordDTO.setSaleDate(record.get(2).getTextContent());
