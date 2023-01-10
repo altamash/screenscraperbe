@@ -26,16 +26,16 @@ public class AppData {
 
     public List<RecordDTO> get(String city, String zip, String miles) {
         List<RecordDTO> result = data;
-        if (zip != null && !zip.isEmpty() && city != null && !city.isEmpty()) {
-            result = data.stream().filter(d -> d.getZip().equals(zip) || d.getCity().toLowerCase().contains(city.toLowerCase())).collect(Collectors.toList());
-        } else if (zip != null && !zip.isEmpty()) {
-            result = data.stream().filter(d -> d.getZip().equals(zip)).collect(Collectors.toList());
-        } else if (city != null && !city.isEmpty()) {
-            result = data.stream().filter(d -> d.getCity().toLowerCase().contains(city.toLowerCase())).collect(Collectors.toList());
-        }
         if (zip != null && !zip.isEmpty() && miles != null && !miles.isEmpty()) {
             List<String> zipCodes = screenScraperService.getZipCodes(zip, miles);
-            result = result.stream().filter(r -> zipCodes.contains(r.getZip())).collect(Collectors.toList());
+            return data.stream().filter(r -> zipCodes.contains(r.getZip())).collect(Collectors.toList());
+        }
+        if (zip != null && !zip.isEmpty() && city != null && !city.isEmpty()) {
+            return data.stream().filter(d -> d.getZip().equals(zip) || d.getCity().toLowerCase().contains(city.toLowerCase())).collect(Collectors.toList());
+        } else if (zip != null && !zip.isEmpty()) {
+            return data.stream().filter(d -> d.getZip().equals(zip)).collect(Collectors.toList());
+        } else if (city != null && !city.isEmpty()) {
+            return data.stream().filter(d -> d.getCity().toLowerCase().contains(city.toLowerCase())).collect(Collectors.toList());
         }
         return result;
     }
