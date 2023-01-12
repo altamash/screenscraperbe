@@ -26,6 +26,7 @@ public class ScreenScraperController {
     public List<RecordDTO> getData(@RequestParam(required = false) String city,
                                    @RequestParam(required = false) String zip,
                                    @RequestParam(required = false) String miles) {
-        return appData.get(city, zip, miles);
+        return appData.get(city == null ? null : city.trim(), zip == null ? null : zip.trim(),
+                miles == null ? null : miles.trim());
     }
 }
