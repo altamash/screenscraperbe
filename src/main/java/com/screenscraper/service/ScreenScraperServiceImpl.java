@@ -37,8 +37,8 @@ public class ScreenScraperServiceImpl implements ScreenScraperService {
 
     @Override
     public List<RecordDTO> getData() {
-        String baseUrl = "file:///C:/workspace/Client/Mr.%20Shahab/Screen%20scraper/virginia-sales.html";
-//        String baseUrl = "/virginia-sales.html";
+//        String baseUrl = "file:///C:/workspace/Client/Mr.%20Shahab/Screen%20scraper/virginia-sales.html";
+        String baseUrl = "/virginia-sales.html";
 //        String baseUrl = "http://www.bww-law.com/virginia-sales/";
         WebClient webClient = Utility.getWebClient(USE_INSECURE_SSL, SET_CSS_ENABLED, JAVA_SCRIPT_ENABLED);
         List<RecordDTO> list = new ArrayList<>();
