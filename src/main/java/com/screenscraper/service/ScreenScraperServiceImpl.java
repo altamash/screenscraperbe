@@ -32,14 +32,14 @@ public class ScreenScraperServiceImpl implements ScreenScraperService {
     private static Logger logger = LoggerFactory.getLogger(ScreenScraperServiceImpl.class);
     private static boolean USE_INSECURE_SSL = true;
     private static boolean SET_CSS_ENABLED = false;
-    private static boolean JAVA_SCRIPT_ENABLED = true;
+    private static boolean JAVA_SCRIPT_ENABLED = false;
     private static String URL = "https://www.zipcodeapi.com/rest/CPUnaj3Ul8Yygj2YL5CAFsuPioKAjH4mklLCSgcr1hbZGOQEgsHJT4LMk87oS1AZ/radius.json/%s/%s/miles";
 
     @Override
     public List<RecordDTO> getData() {
 //        String baseUrl = "file:///C:/workspace/Client/Mr.%20Shahab/Screen%20scraper/virginia-sales.html";
-        String baseUrl = "/virginia-sales.html";
-//        String baseUrl = "http://www.bww-law.com/virginia-sales/";
+//        String baseUrl = "/virginia-sales.html";
+        String baseUrl = "http://www.bww-law.com/virginia-sales/";
         WebClient webClient = Utility.getWebClient(USE_INSECURE_SSL, SET_CSS_ENABLED, JAVA_SCRIPT_ENABLED);
         List<RecordDTO> list = new ArrayList<>();
         try {
